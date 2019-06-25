@@ -9,7 +9,7 @@ Data_Base::Data_Base(){                    //установка соединен
     con.setHostName("");
     con.setPassword("1");
     if(!con.open()){
-        qDebug() << "Cannot open database: " << con.lastError();
+        throw(bad_Data_Base_exception("Cannot open database"));
     }
     else{
         cout << "Connection ok" << endl;
@@ -21,9 +21,7 @@ Data_Base::~Data_Base(){
     dep.clear();
     emp1.clear();
     emp2.clear();
-    if (!db.exec("delete from employee_2")){
-        cout << "Unable to execute employee_2 - clear" << endl;;
-    }
+    !db.exec("delete from employee_2");
 }
 
 void Data_Base::select(){
@@ -34,7 +32,7 @@ void Data_Base::select(){
     QSqlQuery db;
     QString str = QStringLiteral("select * from departament limit %1").arg(lim);
     if (!db.exec(str)){
-        cout << "Unable to execute departament - select" << endl;
+        throw(bad_Data_Base_exception("Unable to execute departament - select"));
     }
 
     QSqlRecord rec = db.record();
@@ -51,7 +49,7 @@ void Data_Base::select(){
     cout << endl;
     str = "select * from employee_1 limit %1";
     if (!db.exec(str.arg(lim))){
-        cout << "Unable to execute employee_1 - select" << endl;
+        throw(bad_Data_Base_exception("Unable to execute employee_1 - select"));
     }
 
     rec = db.record();
@@ -99,7 +97,7 @@ void Data_Base::printTable(string table){
         cout << endl;
     }
     else{
-        cout << "This table not found." << endl;
+        throw(bad_Data_Base_exception("This table not found."));
     }
 }
 
@@ -141,7 +139,7 @@ void Data_Base::sample(){
     }
 
     if (!db.exec("select * from employee_2")){
-        cout << "Unable to execute employee_2 - write to the table" << endl;
+        throw(bad_Data_Base_exception("Unable to execute employee_2 - write to the table"));
     }
 
     db.exec("begin transaction");
@@ -161,3 +159,7 @@ void Data_Base::sample(){
     }
     db.exec("end transaction");
 }
+
+bad_Data_Base_exception::bad_Data_Base_exception(const std::string e) : error(e){}
+
+bad_Data_Base_exception::bad_Data_Base_exception(bad_Data_Base_exception&& other) : error(other.what()){}

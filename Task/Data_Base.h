@@ -2,11 +2,13 @@
 #define DATA_BASE_H
 
 #include <iostream>
+#include <stdio.h>
 #include <QCoreApplication>
 #include <QtSql>
 #include <QTextStream>
 #include <QString>
 
+#include "bad_data_base_exception.h"
 using std::cin;
 using std::cout;
 using std::endl;
@@ -44,6 +46,19 @@ namespace WorkWithSUBD {
         void select();
         void printTable(string table);
         void sample();
+    };
+
+    class bad_Data_Base_exception : public std::exception{
+          const string error;
+    public:
+          bad_Data_Base_exception(const string);
+          bad_Data_Base_exception(bad_Data_Base_exception&& other);
+          bad_Data_Base_exception(const bad_Data_Base_exception& other) = delete;
+          bad_Data_Base_exception operator = (bad_Data_Base_exception&& other) = delete;
+          bad_Data_Base_exception operator = (const bad_Data_Base_exception& other) = delete;
+          ~bad_Data_Base_exception() = default;
+
+          inline const string what(){ return error; }
     };
 }
 

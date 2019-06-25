@@ -3,11 +3,16 @@
 using namespace WorkWithSUBD;
 
 int main(){
-    Data_Base db;
-    db.select();
-    db.printTable("departament");
-    db.printTable("employee_1");
-    db.sample();
-    db.printTable("employee_2");
+    try{
+        Data_Base db;
+        db.select();
+        db.printTable("departament");
+        db.printTable("employee_1");
+        db.sample();
+        db.printTable("employee_2");
+    }
+    catch(bad_Data_Base_exception& error){
+        cout << error.what() << endl;
+    }
     return 0;
 }
