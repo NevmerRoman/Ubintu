@@ -1,5 +1,5 @@
-#ifndef TASK_H
-#define TASK_H
+#ifndef DATA_BASE_H
+#define DATA_BASE_H
 
 #include <iostream>
 #include <QCoreApplication>
@@ -13,7 +13,7 @@ using std::endl;
 using std::vector;
 using std::string;
 
-namespace SUBD {
+namespace WorkWithSUBD {
     struct dBase{
         int id;
         QString city;
@@ -47,4 +47,4 @@ namespace SUBD {
     };
 }
 
-#endif // TASK_H
+#endif // DATA_BASE_H

@@ -1,6 +1,6 @@
-#include "task.h"
+#include "Data_Base.h"
 
-using namespace SUBD;
+using namespace WorkWithSUBD;
 
 Data_Base::Data_Base(){                    //установка соединения с субд
     con = QSqlDatabase::addDatabase("QPSQL");
