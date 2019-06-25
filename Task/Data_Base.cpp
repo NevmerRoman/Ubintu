@@ -161,5 +161,3 @@ void Data_Base::sample(){
 }
 
 bad_Data_Base_exception::bad_Data_Base_exception(const std::string e) : error(e){}
-
-bad_Data_Base_exception::bad_Data_Base_exception(bad_Data_Base_exception&& other) : error(other.what()){}
