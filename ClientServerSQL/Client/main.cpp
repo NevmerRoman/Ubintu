@@ -4,23 +4,28 @@ using namespace ClientServerSQL;
 
 int main(){
     string request;
-    string mes;
+    string value;
+    int key;
 
     try{
         Client client;
 
-        cout << "Enter send or recv or exit: " << endl;
+        cout << "Enter get or set or exit: ";
         cin >> request;
         while (request != "exit"){
-            if(request == "send"){
-                cout << "Enter message: ";
-                cin >> mes;
-                client.Send(client.getsock(), 3, "mes");
+            if(request == "get"){
+                cout << "Enter Key: ";
+                cin >> key;
+                client.Get(client.getsock(), key);
             }
-            if(request == "recv"){
-                client.Recv(client.getsock());
+            if(request == "set"){
+                cout << "Enter Key: ";
+                cin >> key;
+                cout << "Enter Value: ";
+                cin >> value;
+                client.Set(client.getsock(), key, value);
             }
-            cout << "Enter send or recv or exit: " << endl;
+            cout << "Enter get or set or exit: ";
             cin >> request;
         }
     }

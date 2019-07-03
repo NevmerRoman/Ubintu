@@ -3,6 +3,7 @@
 
 #include "/home/student/Project/ClientServerSQL/createsocket.h"
 #include "/home/student/Project/ClientServerSQL/sendrecv.h"
+#include "/home/student/Project/ClientServerSQL/cJSON.h"
 
 namespace ClientServerSQL{
 
@@ -10,9 +11,10 @@ namespace ClientServerSQL{
     public:
         Server() noexcept(false);
         ~Server() noexcept;
-        inline int gesockl(){return s1;}
+        inline int getsockserv(){return servsock;}
+        void Ans(int);
     private:
-        int s1;
+        int servsock;
 
         void Bind() const;
         void Accept();

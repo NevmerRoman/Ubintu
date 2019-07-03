@@ -22,6 +22,3 @@ sockaddr_in CreateSocket::SockAddr(const int port){
 void CreateSocket::Close(){
     close(sock);
 }
-
-
-

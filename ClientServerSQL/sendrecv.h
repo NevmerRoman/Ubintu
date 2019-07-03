@@ -18,11 +18,11 @@ namespace ClientServerSQL{
 class SendRecv{
 public:
     void Send(int, const unsigned int, const char*) noexcept(false);
-    void Recv(int);
-//private:
+    string Recv(int);
+
     SendRecv() = default;
     ~SendRecv() = default;
-
+private:
     int findErrRecv(int) const;
 };
 

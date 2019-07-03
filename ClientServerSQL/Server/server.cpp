@@ -10,6 +10,8 @@ Server::Server() noexcept(false){
 
         // ПОЛУЧАЕМ ВХОДЯЩИЕ ПОДКЛЮЧЕНИЯ
         Accept();
+
+        cout << "Server run" << endl;
 }
 
 Server::~Server() noexcept{
@@ -30,8 +32,28 @@ void Server::Listen() const{
 }
 
 void Server::Accept(){
-    s1 = accept(sock, NULL, NULL);
-    if( s1 < 0 ){
+    servsock = accept(sock, NULL, NULL);
+    if( servsock < 0 ){
         throw("Error calling accept");
+    }
+}
+
+void Server::Ans(int soc){
+    SendRecv sr;
+    string str = sr.Recv(soc);
+    cJSON* jobj = cJSON_Parse(str.c_str());
+    string strValue = cJSON_GetObjectItem(jobj, "Value")->valuestring;
+    jobj = cJSON_CreateObject();
+    if(strValue == "NULL"){
+        cJSON_AddNumberToObject(jobj, "Key", 90);
+        cJSON_AddStringToObject(jobj, "Value", "HAH");
+        str = cJSON_Print(jobj);
+        sr.Send(soc, str.size(), str.c_str());
+    }
+    else{
+        cJSON_AddNumberToObject(jobj, "Key", 5);
+        cJSON_AddStringToObject(jobj, "Value", "Loh");
+        str = cJSON_Print(jobj);
+        sr.Send(soc, str.size(), str.c_str());
     }
 }

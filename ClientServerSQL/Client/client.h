@@ -3,6 +3,7 @@
 
 #include "/home/student/Project/ClientServerSQL/createsocket.h"
 #include "/home/student/Project/ClientServerSQL/sendrecv.h"
+#include "/home/student/Project/ClientServerSQL/cJSON.h"
 
 namespace ClientServerSQL{
 
@@ -10,6 +11,8 @@ namespace ClientServerSQL{
     public:
         Client() noexcept(false);
         ~Client() noexcept;
+        void Get(int, int);
+        void Set(int, int, string);
     private:
         Client(const Client &other) = delete;
         Client(Client &&other) = delete;
