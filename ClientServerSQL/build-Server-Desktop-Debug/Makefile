@@ -38,7 +38,7 @@ DISTNAME      = Server1.0.0
 DISTDIR = /home/student/Project/ClientServerSQL/build-Server-Desktop-Debug/.tmp/Server1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS)  
+LIBS          = $(SUBLIBS) -lpq 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -54,12 +54,18 @@ SOURCES       = ../Server/main.cpp \
 		../bad_cssql_exception.cpp \
 		../Server/server.cpp \
 		../cJSON.c \
-		../workwithnetwork.cpp 
+		../workwithnetwork.cpp \
+		../postgres.cpp \
+		../cash.cpp \
+		../workwitstorage.cpp 
 OBJECTS       = main.o \
 		bad_cssql_exception.o \
 		server.o \
 		cJSON.o \
-		workwithnetwork.o
+		workwithnetwork.o \
+		postgres.o \
+		cash.o \
+		workwitstorage.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -114,7 +120,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		../Server/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -131,11 +136,17 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Server/Server.pro server.h \
 		../bad_cssql_exception.h \
 		../cJSON.h \
-		../workwithnetwork.h ../Server/main.cpp \
+		../workwithnetwork.h \
+		../postgres.h \
+		../cash.h \
+		../workwithstorage.h ../Server/main.cpp \
 		../bad_cssql_exception.cpp \
 		../Server/server.cpp \
 		../cJSON.c \
-		../workwithnetwork.cpp
+		../workwithnetwork.cpp \
+		../postgres.cpp \
+		../cash.cpp \
+		../workwitstorage.cpp
 QMAKE_TARGET  = Server
 DESTDIR       = 
 TARGET        = Server
@@ -201,7 +212,6 @@ Makefile: ../Server/Server.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -271,7 +281,6 @@ Makefile: ../Server/Server.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
-.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -332,6 +341,10 @@ compiler_clean:
 main.o: ../Server/main.cpp ../Server/server.h \
 		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
+		/home/student/Project/ClientServerSQL/workwithstorage.h \
+		/home/student/Project/ClientServerSQL/cash.h \
+		/home/student/Project/ClientServerSQL/postgres.h \
+		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
 		/home/student/Project/ClientServerSQL/cJSON.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Server/main.cpp
 
@@ -341,6 +354,10 @@ bad_cssql_exception.o: ../bad_cssql_exception.cpp ../bad_cssql_exception.h
 server.o: ../Server/server.cpp ../Server/server.h \
 		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
+		/home/student/Project/ClientServerSQL/workwithstorage.h \
+		/home/student/Project/ClientServerSQL/cash.h \
+		/home/student/Project/ClientServerSQL/postgres.h \
+		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
 		/home/student/Project/ClientServerSQL/cJSON.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o ../Server/server.cpp
 
@@ -350,6 +367,19 @@ cJSON.o: ../cJSON.c ../cJSON.h
 workwithnetwork.o: ../workwithnetwork.cpp ../workwithnetwork.h \
 		../bad_cssql_exception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o workwithnetwork.o ../workwithnetwork.cpp
+
+postgres.o: ../postgres.cpp ../postgres.h \
+		/home/student/Project/ClientServerSQL/bad_cssql_exception.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o postgres.o ../postgres.cpp
+
+cash.o: ../cash.cpp ../cash.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cash.o ../cash.cpp
+
+workwitstorage.o: ../workwitstorage.cpp ../workwithstorage.h \
+		/home/student/Project/ClientServerSQL/cash.h \
+		/home/student/Project/ClientServerSQL/postgres.h \
+		/home/student/Project/ClientServerSQL/bad_cssql_exception.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o workwitstorage.o ../workwitstorage.cpp
 
 ####### Install
 

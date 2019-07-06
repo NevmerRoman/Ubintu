@@ -2,11 +2,12 @@
 #define SERVER_H
 
 #include "/home/student/Project/ClientServerSQL/workwithnetwork.h"
+#include "/home/student/Project/ClientServerSQL/workwithstorage.h"
 #include "/home/student/Project/ClientServerSQL/cJSON.h"
 
 namespace ClientServerSQL{
 
-    class Server : public WorkWithNetwork{
+    class Server : public WorkWithNetwork, public WorkWithStorage{
     public:
         Server() noexcept(false);
         ~Server() noexcept;

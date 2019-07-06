@@ -1,17 +1,17 @@
-#include "workwithsql.h"
+#include "postgres.h"
 
 using namespace ClientServerSQL;
 
 int main(){
-    WorkWithSQL wws;
+    Postgres pos;
     string val;
 
-    wws.InsertInDb(40, "Misha");
-    val = wws.GetFromDb(40);
+    pos.InsertInDb(40, "Misha");
+    val = pos.GetFromDb(40);
     cout << val << endl << endl;
 
-    wws.InsertInDb(40, "Sveta");
-    val = wws.GetFromDb(40);
+    pos.InsertInDb(40, "Sveta");
+    val = pos.GetFromDb(40);
     cout << val << endl << endl;
 
     cout << "Hello World!" << endl;

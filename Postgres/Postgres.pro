@@ -5,9 +5,9 @@ CONFIG -= qt
 LIBS += -lpq
 
 SOURCES += main.cpp \
-    workwithsql.cpp \
-    ../ClientServerSQL/bad_cssql_exception.cpp
+    ../ClientServerSQL/bad_cssql_exception.cpp \
+    postgres.cpp
 
 HEADERS += \
-    workwithsql.h \
-    ../ClientServerSQL/bad_cssql_exception.h
+    ../ClientServerSQL/bad_cssql_exception.h \
+    postgres.h

@@ -1,20 +1,20 @@
-#include "workwithsql.h"
+#include "postgres.h"
 
 using namespace ClientServerSQL;
 
-WorkWithSQL::WorkWithSQL(){
+Postgres::Postgres(){
     con = PQconnectdb("host=localhost port=5432 dbname=student user=student password=1");
     if(PQstatus(con) != CONNECTION_OK){
         throw(Bad_CSSQL_exception("Cannot open database"));
     }
 }
 
-WorkWithSQL::~WorkWithSQL(){
+Postgres::~Postgres(){
     PQfinish(con);
     PQclear(result);
 }
 
-int WorkWithSQL::InsertInDb(int key, char* value){
+int Postgres::InsertInDb(int key, char* value){
     stringstream ss;
     string str;
 
@@ -43,7 +43,7 @@ int WorkWithSQL::InsertInDb(int key, char* value){
     return 1;
 }
 
-int WorkWithSQL::FindInDb(int key){
+int Postgres::FindInDb(int key){
     stringstream ss;
     string str;
     ss << "SELECT value FROM key_value WHERE key = '" << key << "';";
@@ -55,7 +55,7 @@ int WorkWithSQL::FindInDb(int key){
     return 1;
 }
 
-const char* WorkWithSQL::GetFromDb(int key){
+const char* Postgres::GetFromDb(int key){
     string str;
     if(FindInDb(key)){
         str = PQgetvalue(result, 0, 0);

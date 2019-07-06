@@ -1,5 +1,5 @@
-#ifndef WORKWITHSQL_H
-#define WORKWITHSQL_H
+#ifndef POSTGRES_H
+#define POSTGRES_H
 
 #include <iostream>
 #include <sstream>
@@ -13,15 +13,15 @@ using std::stringstream;
 
 namespace ClientServerSQL{
 
-class WorkWithSQL{
+class Postgres{
 public:
-    WorkWithSQL() noexcept(false);
-    ~WorkWithSQL();
+    Postgres() noexcept(false);
+    ~Postgres();
 
-    WorkWithSQL(const WorkWithSQL &other) = delete;
-    WorkWithSQL(WorkWithSQL &&other) = delete;
-    WorkWithSQL operator = (const WorkWithSQL &other) = delete;
-    WorkWithSQL operator = (WorkWithSQL &&other) = delete;
+    Postgres(const Postgres &other) = delete;
+    Postgres(Postgres &&other) = delete;
+    Postgres operator = (const Postgres &other) = delete;
+    Postgres operator = (Postgres &&other) = delete;
 
     int InsertInDb(int, char*);
     const char* GetFromDb(int);
@@ -35,4 +35,4 @@ private:
 
 }
 
-#endif // WORKWITHSQL_H
+#endif // POSTGRES_H
