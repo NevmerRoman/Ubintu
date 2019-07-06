@@ -1,13 +1,12 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include "/home/student/Project/ClientServerSQL/createsocket.h"
-#include "/home/student/Project/ClientServerSQL/sendrecv.h"
+#include "/home/student/Project/ClientServerSQL/workwithnetwork.h"
 #include "/home/student/Project/ClientServerSQL/cJSON.h"
 
 namespace ClientServerSQL{
 
-    class Server : public CreateSocket, public SendRecv{
+    class Server : public WorkWithNetwork{
     public:
         Server() noexcept(false);
         ~Server() noexcept;

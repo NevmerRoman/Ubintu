@@ -6,10 +6,10 @@ int main(){
     string request;
     string value;
     int key;
+    Client client;
 
     try{
-        Client client;
-
+        client.Connect();
         cout << "Enter get or set or exit: ";
         cin >> request;
         while (request != "exit"){

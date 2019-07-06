@@ -39,21 +39,20 @@ void Server::Accept(){
 }
 
 void Server::Ans(int soc){
-    SendRecv sr;
-    string str = sr.Recv(soc);
+    string str = Recv(soc);
     cJSON* jobj = cJSON_Parse(str.c_str());
-    string strValue = cJSON_GetObjectItem(jobj, "Value")->valuestring;
+    string strAction = cJSON_GetObjectItem(jobj, "Action")->valuestring;
     jobj = cJSON_CreateObject();
-    if(strValue == "NULL"){
+    if(strAction == "get"){
         cJSON_AddNumberToObject(jobj, "Key", 90);
         cJSON_AddStringToObject(jobj, "Value", "HAH");
         str = cJSON_Print(jobj);
-        sr.Send(soc, str.size(), str.c_str());
+        Send(soc, str.size(), str.c_str());
     }
-    else{
+    else if(strAction == "set"){
         cJSON_AddNumberToObject(jobj, "Key", 5);
         cJSON_AddStringToObject(jobj, "Value", "Loh");
         str = cJSON_Print(jobj);
-        sr.Send(soc, str.size(), str.c_str());
+        Send(soc, str.size(), str.c_str());
     }
 }

@@ -52,16 +52,14 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../Server/main.cpp \
 		../bad_cssql_exception.cpp \
-		../createsocket.cpp \
-		../sendrecv.cpp \
 		../Server/server.cpp \
-		../cJSON.c 
+		../cJSON.c \
+		../workwithnetwork.cpp 
 OBJECTS       = main.o \
 		bad_cssql_exception.o \
-		createsocket.o \
-		sendrecv.o \
 		server.o \
-		cJSON.o
+		cJSON.o \
+		workwithnetwork.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -132,14 +130,12 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Server/Server.pro server.h \
 		../bad_cssql_exception.h \
-		../createsocket.h \
-		../sendrecv.h \
-		../cJSON.h ../Server/main.cpp \
+		../cJSON.h \
+		../workwithnetwork.h ../Server/main.cpp \
 		../bad_cssql_exception.cpp \
-		../createsocket.cpp \
-		../sendrecv.cpp \
 		../Server/server.cpp \
-		../cJSON.c
+		../cJSON.c \
+		../workwithnetwork.cpp
 QMAKE_TARGET  = Server
 DESTDIR       = 
 TARGET        = Server
@@ -334,30 +330,26 @@ compiler_clean:
 ####### Compile
 
 main.o: ../Server/main.cpp ../Server/server.h \
-		/home/student/Project/ClientServerSQL/createsocket.h \
+		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
-		/home/student/Project/ClientServerSQL/sendrecv.h
+		/home/student/Project/ClientServerSQL/cJSON.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Server/main.cpp
 
 bad_cssql_exception.o: ../bad_cssql_exception.cpp ../bad_cssql_exception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bad_cssql_exception.o ../bad_cssql_exception.cpp
 
-createsocket.o: ../createsocket.cpp ../createsocket.h \
-		../bad_cssql_exception.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o createsocket.o ../createsocket.cpp
-
-sendrecv.o: ../sendrecv.cpp ../sendrecv.h \
-		../bad_cssql_exception.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sendrecv.o ../sendrecv.cpp
-
 server.o: ../Server/server.cpp ../Server/server.h \
-		/home/student/Project/ClientServerSQL/createsocket.h \
+		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
-		/home/student/Project/ClientServerSQL/sendrecv.h
+		/home/student/Project/ClientServerSQL/cJSON.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o ../Server/server.cpp
 
 cJSON.o: ../cJSON.c ../cJSON.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o cJSON.o ../cJSON.c
+
+workwithnetwork.o: ../workwithnetwork.cpp ../workwithnetwork.h \
+		../bad_cssql_exception.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o workwithnetwork.o ../workwithnetwork.cpp
 
 ####### Install
 

@@ -5,14 +5,12 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     ../bad_cssql_exception.cpp \
-    ../createsocket.cpp \
-    ../sendrecv.cpp \
     server.cpp \
-    ../cJSON.c
+    ../cJSON.c \
+    ../workwithnetwork.cpp
 
 HEADERS += \
     server.h \
     ../bad_cssql_exception.h \
-    ../createsocket.h \
-    ../sendrecv.h \
-    ../cJSON.h
+    ../cJSON.h \
+    ../workwithnetwork.h

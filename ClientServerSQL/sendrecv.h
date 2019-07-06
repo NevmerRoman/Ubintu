@@ -23,7 +23,7 @@ public:
     SendRecv() = default;
     ~SendRecv() = default;
 private:
-    int findErrRecv(int) const;
+    int findErrRecv(int) const noexcept(false);
 };
 
 }
