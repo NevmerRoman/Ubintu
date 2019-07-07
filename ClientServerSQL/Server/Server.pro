@@ -10,8 +10,8 @@ SOURCES += main.cpp \
     ../cJSON.c \
     ../workwithnetwork.cpp \
     ../postgres.cpp \
-    ../cash.cpp \
-    ../workwitstorage.cpp
+    ../workwitstorage.cpp \
+    ../cashe.cpp
 
 HEADERS += \
     server.h \
@@ -19,5 +19,5 @@ HEADERS += \
     ../cJSON.h \
     ../workwithnetwork.h \
     ../postgres.h \
-    ../cash.h \
-    ../workwithstorage.h
+    ../workwithstorage.h \
+    ../cashe.h

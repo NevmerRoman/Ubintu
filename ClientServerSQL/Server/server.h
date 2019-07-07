@@ -10,15 +10,15 @@ namespace ClientServerSQL{
     class Server : public WorkWithNetwork, public WorkWithStorage{
     public:
         Server() noexcept(false);
-        ~Server() noexcept;
+        ~Server();
         inline int getsockserv(){return servsock;}
         void Ans(int);
     private:
         int servsock;
 
-        void Bind() const;
-        void Accept();
-        void Listen() const;
+        void Bind() const noexcept(false);
+        void Accept() noexcept(false);
+        void Listen() const noexcept(false);
 
         Server(const Server &other) = delete;
         Server(Server &&other) = delete;

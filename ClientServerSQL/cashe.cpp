@@ -1,8 +1,8 @@
-#include "cash.h"
+#include "cashe.h"
 
 using namespace ClientServerSQL;
 
-void Cash::InsertCash(int key, string value) noexcept(false){
+void Cash::InsertCashe(int key, string value) noexcept(false){
     kv.k = key;
     kv.v = value;
     if(storage.size() < 10){
@@ -14,7 +14,7 @@ void Cash::InsertCash(int key, string value) noexcept(false){
     }
 }
 
-string Cash::GetCash(int key){
+string Cash::GetCashe(int key){
     for(unsigned int i = 0; i < storage.size(); ++i){
         if(storage[i].k == key)
         return storage[i].v;
@@ -22,7 +22,7 @@ string Cash::GetCash(int key){
     return "Key not found";
 }
 
-void Cash::PrintCash(){
+void Cash::PrintCashe(){
     for(unsigned int i = 0; i < storage.size(); ++i){
         cout << storage[i].k << "  " << storage[i].v << endl;
     }

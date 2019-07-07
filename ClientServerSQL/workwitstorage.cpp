@@ -4,23 +4,23 @@ using namespace ClientServerSQL;
 
 bool WorkWithStorage::Set(int key, string value){
     if(InsertInDb(key, value)){
-        InsertCash(key, value);
-        PrintCash();
+        InsertCashe(key, value);
+        PrintCashe();
         return true;
     }
     return false;
 }
 
 string WorkWithStorage::Get(int key){
-    string value = GetCash(key);
+    string value = GetCashe(key);
     if(value != "Key not found"){
         return value;
     }
     else{
         value = GetFromDb(key);
         if(value != "Key not found"){
-            InsertCash(key, value);
-            PrintCash();
+            InsertCashe(key, value);
+            PrintCashe();
             return value;
         }
     }

@@ -1,7 +1,7 @@
 #ifndef WORKWITHSTORAGE_H
 #define WORKWITHSTORAGE_H
 
-#include "/home/student/Project/ClientServerSQL/cash.h"
+#include "/home/student/Project/ClientServerSQL/cashe.h"
 #include "/home/student/Project/ClientServerSQL/postgres.h"
 
 namespace ClientServerSQL {

@@ -2,7 +2,7 @@
 
 using namespace ClientServerSQL;
 
-int WorkWithNetwork::MakeSocket(){
+int WorkWithNetwork::MakeSocket() noexcept(false){
     sock = socket(AF_INET, SOCK_STREAM, 0);
     if(sock < 0){
         throw(Bad_CSSQL_exception("Error calling socket"));
@@ -34,7 +34,7 @@ void WorkWithNetwork::Send(int soc, const unsigned int len, const char* request)
     }
 }
 
-int WorkWithNetwork::findErrRecv(int result) const noexcept(false){
+int WorkWithNetwork::findErrRecv(int result) const{
     if (result < 0){
         throw(Bad_CSSQL_exception("Error calling recv"));
         return 1;

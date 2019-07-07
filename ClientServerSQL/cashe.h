@@ -1,5 +1,5 @@
-#ifndef CASH_H
-#define CASH_H
+#ifndef CASHE_H
+#define CASHE_H
 
 #include <iostream>
 #include <deque>
@@ -22,9 +22,9 @@ public:
     Cash() = default;
     ~Cash() = default;
 
-    void InsertCash(int, string);
-    string GetCash(int);
-    void PrintCash();
+    void InsertCashe(int, string);
+    string GetCashe(int);
+    void PrintCashe();
 
 private:
     deque <KeyValue> storage;
@@ -38,4 +38,4 @@ private:
 
 }
 
-#endif // CASH_H
+#endif // CASHE_H

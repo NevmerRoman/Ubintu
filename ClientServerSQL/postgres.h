@@ -23,7 +23,7 @@ public:
     Postgres operator = (const Postgres &other) = delete;
     Postgres operator = (Postgres &&other) = delete;
 
-    bool InsertInDb(int, string);
+    bool InsertInDb(int, string) noexcept(false);
     string GetFromDb(int);
 
 private:

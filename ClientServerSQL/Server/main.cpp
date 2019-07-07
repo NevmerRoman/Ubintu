@@ -4,8 +4,6 @@ using namespace ClientServerSQL;
 
 int main(){
     try {
-        // СОЗДАНИЕ СЕРВЕРА
-        // по умолчанию port = 29033
         Server server;
 
         while (1){
