@@ -54,12 +54,14 @@ SOURCES       = ../Client/main.cpp \
 		../Client/client.cpp \
 		../bad_cssql_exception.cpp \
 		../cJSON.c \
-		../workwithnetwork.cpp 
+		../workwithnetwork.cpp \
+		../log.cpp 
 OBJECTS       = main.o \
 		client.o \
 		bad_cssql_exception.o \
 		cJSON.o \
-		workwithnetwork.o
+		workwithnetwork.o \
+		log.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -131,11 +133,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Client/Client.pro client.h \
 		../bad_cssql_exception.h \
 		../cJSON.h \
-		../workwithnetwork.h ../Client/main.cpp \
+		../workwithnetwork.h \
+		../log.h ../Client/main.cpp \
 		../Client/client.cpp \
 		../bad_cssql_exception.cpp \
 		../cJSON.c \
-		../workwithnetwork.cpp
+		../workwithnetwork.cpp \
+		../log.cpp
 QMAKE_TARGET  = Client
 DESTDIR       = 
 TARGET        = Client
@@ -332,13 +336,15 @@ compiler_clean:
 main.o: ../Client/main.cpp ../Client/client.h \
 		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
-		/home/student/Project/ClientServerSQL/cJSON.h
+		/home/student/Project/ClientServerSQL/cJSON.h \
+		/home/student/Project/ClientServerSQL/log.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Client/main.cpp
 
 client.o: ../Client/client.cpp ../Client/client.h \
 		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
-		/home/student/Project/ClientServerSQL/cJSON.h
+		/home/student/Project/ClientServerSQL/cJSON.h \
+		/home/student/Project/ClientServerSQL/log.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o client.o ../Client/client.cpp
 
 bad_cssql_exception.o: ../bad_cssql_exception.cpp ../bad_cssql_exception.h
@@ -350,6 +356,9 @@ cJSON.o: ../cJSON.c ../cJSON.h
 workwithnetwork.o: ../workwithnetwork.cpp ../workwithnetwork.h \
 		../bad_cssql_exception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o workwithnetwork.o ../workwithnetwork.cpp
+
+log.o: ../log.cpp ../log.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o log.o ../log.cpp
 
 ####### Install
 

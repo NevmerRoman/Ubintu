@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     ../workwithnetwork.cpp \
     ../postgres.cpp \
     ../workwitstorage.cpp \
-    ../cashe.cpp
+    ../cashe.cpp \
+    ../log.cpp
 
 HEADERS += \
     server.h \
@@ -20,4 +21,5 @@ HEADERS += \
     ../workwithnetwork.h \
     ../postgres.h \
     ../workwithstorage.h \
-    ../cashe.h
+    ../cashe.h \
+    ../log.h

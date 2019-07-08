@@ -1,0 +1,44 @@
+Bind | Mon Jul  8 23:36:43 2019
+Listen | Mon Jul  8 23:36:43 2019
+Accept | Mon Jul  8 23:36:43 2019
+Server run | Mon Jul  8 23:36:43 2019
+Request from client get key 4 | Mon Jul  8 23:36:43 2019
+Request from server GetCashe key 4 | Mon Jul  8 23:36:43 2019
+Request from server GetFromDb key 4 | Mon Jul  8 23:36:43 2019
+Insert in cashe key 4 | Mon Jul  8 23:36:43 2019
+Answer to the client: Roma | Mon Jul  8 23:36:43 2019
+Request from client get key 12 | Mon Jul  8 23:36:43 2019
+Request from server GetCashe key 12 | Mon Jul  8 23:36:43 2019
+Request from server GetFromDb key 12 | Mon Jul  8 23:36:43 2019
+Answer to the client: Key not found | Mon Jul  8 23:36:43 2019
+Request from client set key 4 value Roma| Mon Jul  8 23:36:43 2019
+Request from server InsertFromDb key 4 value Roma | Mon Jul  8 23:36:43 2019
+Insert in cashe key 4 value Roma | Mon Jul  8 23:36:43 2019
+Answer to the client: Insertion successful | Mon Jul  8 23:36:43 2019
+Request from client get key 56 | Mon Jul  8 23:36:43 2019
+Request from server GetCashe key 56 | Mon Jul  8 23:36:43 2019
+Request from server GetFromDb key 56 | Mon Jul  8 23:36:43 2019
+Insert in cashe key 56 | Mon Jul  8 23:36:43 2019
+Answer to the client: Pasha | Mon Jul  8 23:36:43 2019
+Request from client set key 10 value Roma| Mon Jul  8 23:36:43 2019
+Request from server InsertFromDb key 10 value Roma | Mon Jul  8 23:36:43 2019
+Insert in cashe key 10 value Roma | Mon Jul  8 23:36:43 2019
+Answer to the client: Insertion successful | Mon Jul  8 23:36:43 2019
+Request from client get key 2 | Mon Jul  8 23:36:43 2019
+Request from server GetCashe key 2 | Mon Jul  8 23:36:43 2019
+Request from server GetFromDb key 2 | Mon Jul  8 23:36:43 2019
+Answer to the client: Key not found | Mon Jul  8 23:36:43 2019
+Request from client get key 2 | Mon Jul  8 23:36:43 2019
+Request from server GetCashe key 2 | Mon Jul  8 23:36:43 2019
+Request from server GetFromDb key 2 | Mon Jul  8 23:36:43 2019
+Answer to the client: Key not found | Mon Jul  8 23:36:43 2019
+Request from client get key 10 | Mon Jul  8 23:36:43 2019
+Request from server GetCashe key 10 | Mon Jul  8 23:36:43 2019
+Answer to the client: Roma | Mon Jul  8 23:36:43 2019
+Request from client get key 2 | Mon Jul  8 23:36:43 2019
+Request from server GetCashe key 2 | Mon Jul  8 23:36:43 2019
+Request from server GetFromDb key 2 | Mon Jul  8 23:36:43 2019
+Answer to the client: Key not found | Mon Jul  8 23:36:43 2019
+Disconnect | Mon Jul  8 23:36:43 2019
+
+

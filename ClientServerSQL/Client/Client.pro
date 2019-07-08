@@ -7,10 +7,12 @@ SOURCES += main.cpp \
     client.cpp \
     ../bad_cssql_exception.cpp \
     ../cJSON.c \
-    ../workwithnetwork.cpp
+    ../workwithnetwork.cpp \
+    ../log.cpp
 
 HEADERS += \
     client.h \
     ../bad_cssql_exception.h \
     ../cJSON.h \
-    ../workwithnetwork.h
+    ../workwithnetwork.h \
+    ../log.h

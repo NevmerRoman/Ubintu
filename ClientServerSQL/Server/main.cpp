@@ -10,6 +10,7 @@ int main(){
             server.Ans(server.getsockserv());
         }
     }
+
     catch(Bad_CSSQL_exception &error){
         cout << error.what() << endl;
     }

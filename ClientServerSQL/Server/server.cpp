@@ -7,29 +7,37 @@ Server::Server() noexcept(false){
     Listen();
     Accept();
     cout << "Server run" << endl;
+    logfile->WriteLog("Server run | %s", ctime(&logtime));
 }
 
 Server::~Server() noexcept{
+    logfile->WriteLog("Disconnect | %s\n\n", ctime(&logtime));
     Close();
 }
 
 void Server::Bind() const{
     if( bind(sock, (struct sockaddr *)&sock_addr, sizeof(sock_addr)) < 0 ){
+        logfile->WriteLog("Error calling bind | %s", ctime(&logtime));
         throw("Error calling bind");
     }
+    logfile->WriteLog("Bind | %s", ctime(&logtime));
 }
 
 void Server::Listen() const{
     if( listen(sock, 1) ){
+        logfile->WriteLog("Error calling listen | %s", ctime(&logtime));
         throw("Error calling listen");
     }
+    logfile->WriteLog("Listen | %s", ctime(&logtime));
 }
 
 void Server::Accept(){
     servsock = accept(sock, NULL, NULL);
     if( servsock < 0 ){
+        logfile->WriteLog("Error calling accept | %s", ctime(&logtime));
         throw("Error calling accept");
     }
+    logfile->WriteLog("Accept | %s", ctime(&logtime));
 }
 
 void Server::Ans(int soc){
@@ -42,8 +50,10 @@ void Server::Ans(int soc){
 
     if(strAction == "get"){
         key = cJSON_GetObjectItem(jobj, "Key")->valueint;
+        logfile->WriteLog("Request from client get key %d | %s", key, ctime(&logtime));
         value = Get(key);
 
+        logfile->WriteLog("Answer to the client: %s | %s", value.c_str(), ctime(&logtime));
         jobj = cJSON_CreateObject();
         cJSON_AddStringToObject(jobj, "Answer", value.c_str());
         str = cJSON_Print(jobj);
@@ -52,15 +62,20 @@ void Server::Ans(int soc){
     else if(strAction == "set"){
         key = cJSON_GetObjectItem(jobj, "Key")->valueint;
         value = cJSON_GetObjectItem(jobj, "Value")->valuestring;
+        logfile->WriteLog("Request from client set key %d value %s| %s", key, value.c_str(), ctime(&logtime));
 
         jobj = cJSON_CreateObject();
         if(Set(key, value)){
             cJSON_AddStringToObject(jobj, "Answer", "Insertion successful");
+            logfile->WriteLog("Answer to the client: Insertion successful | %s", ctime(&logtime));
         }
         else {
             cJSON_AddStringToObject(jobj, "Answer", "Insertion failed");
+            logfile->WriteLog("Answer to the client: Insertion failed | %s", ctime(&logtime));
         }
         str = cJSON_Print(jobj);
         Send(soc, str.size(), str.c_str());
     }
+
+    cJSON_Delete(jobj);
 }

@@ -1,0 +1,28 @@
+Connect | Mon Jul  8 23:37:00 2019
+Get key: 4 | Mon Jul  8 23:37:00 2019
+	"Answer":	"Roma"}}}} | Mon Jul  8 23:37:00 2019
+Get key: 12 | Mon Jul  8 23:37:00 2019
+	"Answer":	"Key not found"}}}} | Mon Jul  8 23:37:00 2019
+Set key: 4 value: Roma | Mon Jul  8 23:37:00 2019
+	"Answer":	"Insertion successful"}}}} | Mon Jul  8 23:37:00 2019
+Get key: 56 | Mon Jul  8 23:37:00 2019
+	"Answer":	"Pasha"}}}} | Mon Jul  8 23:37:00 2019
+Set key: 10 value: Roma | Mon Jul  8 23:37:00 2019
+	"Answer":	"Insertion successful"}}}} | Mon Jul  8 23:37:00 2019
+Get key: 2 | Mon Jul  8 23:37:00 2019
+	"Answer":	"Key not found"sful"}}
+
+}} | Mon Jul  8 23:37:00 2019
+Get key: 2 | Mon Jul  8 23:37:00 2019
+	"Answer":	"Key not found""}}}}}
+
+}}} | Mon Jul  8 23:37:00 2019
+Get key: 10 | Mon Jul  8 23:37:00 2019
+	"Answer":	"Roma"}}}} | Mon Jul  8 23:37:00 2019
+Get key: 2 | Mon Jul  8 23:37:00 2019
+	"Answer":	"Key not found"}}}}}
+
+}}}} | Mon Jul  8 23:37:00 2019
+Disconnect | Mon Jul  8 23:37:00 2019
+
+
