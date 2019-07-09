@@ -13,6 +13,7 @@ Server::Server() noexcept(false){
 Server::~Server() noexcept{
     logfile->WriteLog("Disconnect \t|\t %s\n\n", ctime(&logtime));
     Close();
+    delete wws;
 }
 
 void Server::Bind() const{

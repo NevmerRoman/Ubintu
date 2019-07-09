@@ -5,6 +5,7 @@
 #include <cstdarg>
 #include <fstream>
 #include <time.h>
+#include "bad_cssql_exception.h"
 
 using std::cout;
 using std::endl;
@@ -15,7 +16,7 @@ namespace ClientServerSQL{
 class Log{
 
 public:
-    Log(const string);
+    Log(const string) noexcept(false);
     ~Log();
 
     void WriteLog(const char*, ...);

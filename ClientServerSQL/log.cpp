@@ -4,6 +4,9 @@ using namespace ClientServerSQL;
 
 Log::Log(const string fname){
     file = fopen(fname.c_str(), "a");
+    if(file == NULL){
+        throw(Bad_CSSQL_exception("Error calling socket"));
+    }
 }
 
 Log::~Log(){
