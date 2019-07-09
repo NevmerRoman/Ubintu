@@ -2,6 +2,10 @@
 
 using namespace ClientServerSQL;
 
+Storage::~Storage(){
+    delete logfile;
+}
+
 bool Storage::Set(int key, string value){
     if(db.Set(key, value)){
         logfile->WriteLog("Request from server InsertFromDb key %d value %s \t|\t %s", key, value.c_str(), ctime(&logtime));

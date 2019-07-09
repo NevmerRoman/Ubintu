@@ -4,6 +4,7 @@ using namespace ClientServerSQL;
 
 Client::~Client() noexcept{
     logfile->WriteLog("Disconnect \t|\t %s\n\n", ctime(&logtime));
+    delete logfile;
     Close();
 }
 

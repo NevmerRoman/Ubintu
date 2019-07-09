@@ -11,7 +11,7 @@ class Storage : public WorkWithStorage{
 
 public:
     Storage() = default;
-    ~Storage() = default;
+    ~Storage();
 
     bool Set(int, string);
     string Get(int);

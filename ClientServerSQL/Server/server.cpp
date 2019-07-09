@@ -14,6 +14,7 @@ Server::~Server() noexcept{
     logfile->WriteLog("Disconnect \t|\t %s\n\n", ctime(&logtime));
     Close();
     delete wws;
+    delete logfile;
 }
 
 void Server::Bind() const{
