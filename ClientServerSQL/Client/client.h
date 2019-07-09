@@ -1,7 +1,6 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <algorithm>
 #include "/home/student/Project/ClientServerSQL/workwithnetwork.h"
 #include "/home/student/Project/ClientServerSQL/cJSON.h"
 #include "/home/student/Project/ClientServerSQL/log.h"

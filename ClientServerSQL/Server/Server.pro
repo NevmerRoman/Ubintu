@@ -9,17 +9,19 @@ SOURCES += main.cpp \
     server.cpp \
     ../cJSON.c \
     ../workwithnetwork.cpp \
-    ../postgres.cpp \
-    ../workwitstorage.cpp \
-    ../cashe.cpp \
-    ../log.cpp
+    ../log.cpp \
+    cashe.cpp \
+    postgres.cpp \
+    storage.cpp
 
 HEADERS += \
     server.h \
     ../bad_cssql_exception.h \
     ../cJSON.h \
     ../workwithnetwork.h \
-    ../postgres.h \
-    ../workwithstorage.h \
-    ../cashe.h \
-    ../log.h
+    ../log.h \
+    cashe.h \
+    postgres.h \
+    workwithstorage.h \
+    storage.h \
+    storage.h

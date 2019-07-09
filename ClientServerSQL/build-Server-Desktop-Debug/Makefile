@@ -55,19 +55,19 @@ SOURCES       = ../Server/main.cpp \
 		../Server/server.cpp \
 		../cJSON.c \
 		../workwithnetwork.cpp \
-		../postgres.cpp \
-		../workwitstorage.cpp \
-		../cashe.cpp \
-		../log.cpp 
+		../log.cpp \
+		../Server/cashe.cpp \
+		../Server/postgres.cpp \
+		../Server/storage.cpp 
 OBJECTS       = main.o \
 		bad_cssql_exception.o \
 		server.o \
 		cJSON.o \
 		workwithnetwork.o \
-		postgres.o \
-		workwitstorage.o \
+		log.o \
 		cashe.o \
-		log.o
+		postgres.o \
+		storage.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -140,18 +140,20 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../bad_cssql_exception.h \
 		../cJSON.h \
 		../workwithnetwork.h \
-		../postgres.h \
-		../workwithstorage.h \
-		../cashe.h \
-		../log.h ../Server/main.cpp \
+		../log.h \
+		cashe.h \
+		postgres.h \
+		workwithstorage.h \
+		storage.h \
+		storage.h ../Server/main.cpp \
 		../bad_cssql_exception.cpp \
 		../Server/server.cpp \
 		../cJSON.c \
 		../workwithnetwork.cpp \
-		../postgres.cpp \
-		../workwitstorage.cpp \
-		../cashe.cpp \
-		../log.cpp
+		../log.cpp \
+		../Server/cashe.cpp \
+		../Server/postgres.cpp \
+		../Server/storage.cpp
 QMAKE_TARGET  = Server
 DESTDIR       = 
 TARGET        = Server
@@ -348,11 +350,12 @@ compiler_clean:
 main.o: ../Server/main.cpp ../Server/server.h \
 		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
-		/home/student/Project/ClientServerSQL/workwithstorage.h \
-		/home/student/Project/ClientServerSQL/cashe.h \
-		/home/student/Project/ClientServerSQL/postgres.h \
+		../Server/workwithstorage.h \
+		../Server/cashe.h \
+		../Server/postgres.h \
 		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
 		/home/student/Project/ClientServerSQL/log.h \
+		../Server/storage.h \
 		/home/student/Project/ClientServerSQL/cJSON.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Server/main.cpp
 
@@ -362,11 +365,12 @@ bad_cssql_exception.o: ../bad_cssql_exception.cpp ../bad_cssql_exception.h
 server.o: ../Server/server.cpp ../Server/server.h \
 		/home/student/Project/ClientServerSQL/workwithnetwork.h \
 		../bad_cssql_exception.h \
-		/home/student/Project/ClientServerSQL/workwithstorage.h \
-		/home/student/Project/ClientServerSQL/cashe.h \
-		/home/student/Project/ClientServerSQL/postgres.h \
+		../Server/workwithstorage.h \
+		../Server/cashe.h \
+		../Server/postgres.h \
 		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
 		/home/student/Project/ClientServerSQL/log.h \
+		../Server/storage.h \
 		/home/student/Project/ClientServerSQL/cJSON.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o server.o ../Server/server.cpp
 
@@ -377,22 +381,30 @@ workwithnetwork.o: ../workwithnetwork.cpp ../workwithnetwork.h \
 		../bad_cssql_exception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o workwithnetwork.o ../workwithnetwork.cpp
 
-postgres.o: ../postgres.cpp ../postgres.h \
-		/home/student/Project/ClientServerSQL/bad_cssql_exception.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o postgres.o ../postgres.cpp
-
-workwitstorage.o: ../workwitstorage.cpp ../workwithstorage.h \
-		/home/student/Project/ClientServerSQL/cashe.h \
-		/home/student/Project/ClientServerSQL/postgres.h \
-		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
-		/home/student/Project/ClientServerSQL/log.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o workwitstorage.o ../workwitstorage.cpp
-
-cashe.o: ../cashe.cpp ../cashe.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cashe.o ../cashe.cpp
-
 log.o: ../log.cpp ../log.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o log.o ../log.cpp
+
+cashe.o: ../Server/cashe.cpp ../Server/cashe.h \
+		../Server/workwithstorage.h \
+		../Server/postgres.h \
+		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
+		/home/student/Project/ClientServerSQL/log.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cashe.o ../Server/cashe.cpp
+
+postgres.o: ../Server/postgres.cpp ../Server/postgres.h \
+		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
+		../Server/workwithstorage.h \
+		../Server/cashe.h \
+		/home/student/Project/ClientServerSQL/log.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o postgres.o ../Server/postgres.cpp
+
+storage.o: ../Server/storage.cpp ../Server/storage.h \
+		../Server/cashe.h \
+		../Server/workwithstorage.h \
+		../Server/postgres.h \
+		/home/student/Project/ClientServerSQL/bad_cssql_exception.h \
+		/home/student/Project/ClientServerSQL/log.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o storage.o ../Server/storage.cpp
 
 ####### Install
 

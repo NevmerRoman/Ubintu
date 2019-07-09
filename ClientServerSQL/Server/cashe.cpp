@@ -2,9 +2,17 @@
 
 using namespace ClientServerSQL;
 
-void Cash::InsertCashe(int key, string value) noexcept(false){
+bool Cashe::Set(int key, string value) noexcept(false){
     kv.k = key;
     kv.v = value;
+
+    for(unsigned int i = 0; i < storage.size(); ++i){
+        if(storage[i].k == key){
+            storage[i].v = value;
+            return 1;
+        }
+    }
+
     if(storage.size() < 10){
         storage.push_front(kv);
     }
@@ -12,9 +20,10 @@ void Cash::InsertCashe(int key, string value) noexcept(false){
         storage.pop_back();
         storage.push_front(kv);
     }
+    return 1;
 }
 
-string Cash::GetCashe(int key){
+string Cashe::Get(int key){
     for(unsigned int i = 0; i < storage.size(); ++i){
         if(storage[i].k == key)
         return storage[i].v;
@@ -22,7 +31,7 @@ string Cash::GetCashe(int key){
     return "Key not found";
 }
 
-void Cash::PrintCashe(){
+void Cashe::PrintCashe(){
     for(unsigned int i = 0; i < storage.size(); ++i){
         cout << storage[i].k << "  " << storage[i].v << endl;
     }

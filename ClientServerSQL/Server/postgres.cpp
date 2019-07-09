@@ -14,7 +14,7 @@ Postgres::~Postgres(){
     PQclear(result);
 }
 
-bool Postgres::InsertInDb(int key, string value){
+bool Postgres::Set(int key, string value){
     stringstream ss;
     string str;
 
@@ -53,7 +53,7 @@ int Postgres::FindInDb(int key){
     return 1;
 }
 
-string Postgres::GetFromDb(int key){
+string Postgres::Get(int key){
     string str;
     if(FindInDb(key)){
         str = PQgetvalue(result, 0, 0);
